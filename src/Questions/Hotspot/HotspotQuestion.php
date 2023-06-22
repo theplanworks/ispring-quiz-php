@@ -25,16 +25,16 @@ class HotspotQuestion extends Question
     }
 
     /**
-     * @param DOMElement $node
+     * @param  DOMElement  $node
      * @return Hotspot[]
      */
     private function getHotspotsFromXmlNode(DOMElement $node = null)
     {
-        if (!$node) {
+        if (! $node) {
             return [];
         }
 
-        $hotspots = array();
+        $hotspots = [];
         foreach ($node->childNodes as $hotspotNode) {
             $hotspot = $this->createHotspotFromNode($hotspotNode);
             if ($hotspot) {
@@ -46,12 +46,12 @@ class HotspotQuestion extends Question
     }
 
     /**
-     * @param DOMElement|DOMNode $hotspotNode
+     * @param  DOMElement|DOMNode  $hotspotNode
      * @return Hotspot
      */
     private function createHotspotFromNode($hotspotNode)
     {
-        if (!($hotspotNode instanceof DOMElement)) {
+        if (! ($hotspotNode instanceof DOMElement)) {
             return null;
         }
 
@@ -62,42 +62,51 @@ class HotspotQuestion extends Question
     }
 
     /**
-     * @param Hotspot[] $hotspots
+     * @param  Hotspot[]  $hotspots
      * @return string
      */
     private function getHotspotsMarkedByUser($hotspots)
     {
         $hotspots = array_filter(
             $hotspots,
-            function (Hotspot $hotspot) { return $hotspot->marked; }
+            function (Hotspot $hotspot) {
+                return $hotspot->marked;
+            }
         );
+
         return $this->getHotspotsString($hotspots);
     }
 
     /**
-     * @param Hotspot[] $hotspots
+     * @param  Hotspot[]  $hotspots
      * @return string
      */
     private function getCorrectHotspots($hotspots)
     {
         $hotspots = array_filter(
             $hotspots,
-            function (Hotspot $hotspot) { return $hotspot->correct; }
+            function (Hotspot $hotspot) {
+                return $hotspot->correct;
+            }
         );
+
         return $this->getHotspotsString($hotspots);
     }
 
     /**
-     * @param Hotspot[] $hotspots
+     * @param  Hotspot[]  $hotspots
      * @return string
      */
     private function getHotspotsString($hotspots)
     {
         $labels = array_map(
-            function (Hotspot $hotspot) { return $hotspot->label; },
+            function (Hotspot $hotspot) {
+                return $hotspot->label;
+            },
             $hotspots
         );
         $notEmptyLabels = array_filter($labels);
+
         return implode('; ', $notEmptyLabels);
     }
 }

@@ -25,7 +25,7 @@ class MatchingQuestion extends MatchingSurveyQuestion
             if ($this->correctAnswer != '') {
                 $this->correctAnswer .= '; ';
             }
-            $this->correctAnswer .= $premise . ' - ' . $this->responses[$i];
+            $this->correctAnswer .= $premise.' - '.$this->responses[$i];
         }
     }
 }

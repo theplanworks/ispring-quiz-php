@@ -3,19 +3,21 @@
 namespace ThePLAN\IspringQuizPhp\Questions\Matching;
 
 use DOMElement;
-use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 use ThePLAN\IspringQuizPhp\Questions\Question;
+use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 
 class MatchingSurveyQuestion extends Question
 {
     /**
      * premises
+     *
      * @var array of string
      */
     public $premises;
 
     /**
      * resposes
+     *
      * @var array of string
      */
     public $responses;
@@ -31,17 +33,17 @@ class MatchingSurveyQuestion extends Question
 
         $premisesNode = $node->getElementsByTagName('premises')->item(0);
         $premisesList = $premisesNode->getElementsByTagName('premise');
-        for ($i = 0; $i < $premisesList->length; ++$i) {
+        for ($i = 0; $i < $premisesList->length; $i++) {
             $this->premises[] = XmlUtils::getElementText($premisesList->item($i));
         }
 
         $responsesNode = $node->getElementsByTagName('responses')->item(0);
         $responsesList = $responsesNode->getElementsByTagName('response');
-        for ($i = 0; $i < $responsesList->length; ++$i) {
+        for ($i = 0; $i < $responsesList->length; $i++) {
             $this->responses[] = XmlUtils::getElementText($responsesList->item($i));
         }
 
-        $userAnswerMatches = array();
+        $userAnswerMatches = [];
         if ($node->getElementsByTagName('userAnswer')->length != 0) {
             $userAnswerNode = $node->getElementsByTagName('userAnswer')->item(0);
             $userAnswerMatches = $this->exportMatchesCollection($userAnswerNode);
@@ -51,7 +53,7 @@ class MatchingSurveyQuestion extends Question
             return;
         }
 
-        $userAnswers = array();
+        $userAnswers = [];
         foreach ($userAnswerMatches as $answer) {
             $userAnswers[$answer->premiseIndex] = $answer;
         }
@@ -65,21 +67,22 @@ class MatchingSurveyQuestion extends Question
             if ($this->userAnswer != '') {
                 $this->userAnswer .= '; ';
             }
-            $this->userAnswer .= $this->premises[$premiseIndex] . ' - ' . $this->responses[$responseIndex];
+            $this->userAnswer .= $this->premises[$premiseIndex].' - '.$this->responses[$responseIndex];
         }
     }
 
     /**
      * export matches collection from xml node
+     *
      * @param $node DOMElement xml node
      * @return array of Match
      */
     protected function exportMatchesCollection(DOMElement $node)
     {
-        $out = array();
+        $out = [];
 
         $matchesList = $node->getElementsByTagName('match');
-        for ($i = 0; $i < $matchesList->length; ++$i) {
+        for ($i = 0; $i < $matchesList->length; $i++) {
             $matchNode = $matchesList->item($i);
 
             $match = new Matching();

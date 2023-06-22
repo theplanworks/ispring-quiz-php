@@ -7,6 +7,7 @@ use DOMElement;
 class DndMatch
 {
     public $objectIndex;
+
     public $destinationIndex;
 
     public function initFromXmlNode(DOMElement $node)

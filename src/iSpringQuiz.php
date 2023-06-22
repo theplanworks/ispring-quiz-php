@@ -2,45 +2,52 @@
 
 namespace ThePLAN\IspringQuizPhp;
 
-use DOMElement;
 use DOMDocument;
-use ThePLAN\IspringQuizPhp\Utils\Version;
-use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
-use ThePLAN\IspringQuizPhp\Questions\QuestionType;
-use ThePLAN\IspringQuizPhp\Questions\Essay\EssayQuestion;
-use ThePLAN\IspringQuizPhp\Questions\TypeIn\TypeInQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Hotspot\HotspotQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Numeric\NumericQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Matching\MatchingQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Sequence\SequenceQuestion;
-use ThePLAN\IspringQuizPhp\Questions\WordBank\WordBankQuestion;
-use ThePLAN\IspringQuizPhp\Questions\TrueFalse\TrueFalseQuestion;
-use ThePLAN\IspringQuizPhp\Questions\TypeIn\TypeInSurveyQuestion;
+use DOMElement;
 use ThePLAN\IspringQuizPhp\Questions\DragNDrop\DragAndDropQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Numeric\NumericSurveyQuestion;
-use ThePLAN\IspringQuizPhp\Questions\LikertScale\LikertScaleQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Matching\MatchingSurveyQuestion;
-use ThePLAN\IspringQuizPhp\Questions\Sequence\SequenceSurveyQuestion;
-use ThePLAN\IspringQuizPhp\Questions\WordBank\WordBankSurveyQuestion;
-use ThePLAN\IspringQuizPhp\Questions\TrueFalse\TrueFalseSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Essay\EssayQuestion;
 use ThePLAN\IspringQuizPhp\Questions\FillInTheBlank\FillInTheBlankQuestion;
-use ThePLAN\IspringQuizPhp\Questions\MultipleChoice\MultipleChoiceQuestion;
-use ThePLAN\IspringQuizPhp\Questions\MultipleResponse\MultipleResponseQuestion;
 use ThePLAN\IspringQuizPhp\Questions\FillInTheBlank\FillInTheBlankSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Hotspot\HotspotQuestion;
+use ThePLAN\IspringQuizPhp\Questions\LikertScale\LikertScaleQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Matching\MatchingQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Matching\MatchingSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\MultipleChoice\MultipleChoiceQuestion;
 use ThePLAN\IspringQuizPhp\Questions\MultipleChoice\MultipleChoiceSurveyQuestion;
 use ThePLAN\IspringQuizPhp\Questions\MultipleChoiceText\MultipleChoiceTextQuestion;
-use ThePLAN\IspringQuizPhp\Questions\MultipleResponse\MultipleResponseSurveyQuestion;
 use ThePLAN\IspringQuizPhp\Questions\MultipleChoiceText\MultipleChoiceTextSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\MultipleResponse\MultipleResponseQuestion;
+use ThePLAN\IspringQuizPhp\Questions\MultipleResponse\MultipleResponseSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Numeric\NumericQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Numeric\NumericSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\QuestionType;
+use ThePLAN\IspringQuizPhp\Questions\Sequence\SequenceQuestion;
+use ThePLAN\IspringQuizPhp\Questions\Sequence\SequenceSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\TrueFalse\TrueFalseQuestion;
+use ThePLAN\IspringQuizPhp\Questions\TrueFalse\TrueFalseSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\TypeIn\TypeInQuestion;
+use ThePLAN\IspringQuizPhp\Questions\TypeIn\TypeInSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Questions\WordBank\WordBankQuestion;
+use ThePLAN\IspringQuizPhp\Questions\WordBank\WordBankSurveyQuestion;
+use ThePLAN\IspringQuizPhp\Utils\Version;
+use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 
 class iSpringQuiz
 {
-    public const XSD_CURRENT = "QuizReport.xsd";
-    public const XSD_OLDER_THAN_9 = "QuizReport_8.xsd";
+    public const XSD_CURRENT = 'QuizReport.xsd';
+
+    public const XSD_OLDER_THAN_9 = 'QuizReport_8.xsd';
+
     public const VERSION_9 = '9.0';
+
     public const FINISH_TIMESTAMP_ATTRIBUTE = 'finishTimestamp';
+
     public const IS_TEST_PASSED_ATTRIBUTE = 'passed';
+
     public const PASSING_PERCENT_TAG = 'passingPercent';
+
     public const STUDENT_PERCENT_ATTRIBUTE = 'percent';
+
     public const TYPE_IN_RENAMED_IN_VERSION = '9.0';
 
     /** @var string|null */
@@ -55,7 +62,7 @@ class iSpringQuiz
     /** @var float|null */
     public $studentPercent = null;
 
-    /** @var float|null  */
+    /** @var float|null */
     public $passingPercent = null;
 
     public function parseQuizXml(string $xml, string $version)
@@ -71,8 +78,9 @@ class iSpringQuiz
         $doc->loadXML($xml);
 
         // validate xml
-        if (!$doc->schemaValidate($xsdFileName)) {
+        if (! $doc->schemaValidate($xsdFileName)) {
             error_log(var_export(libxml_get_errors(), true));
+
             return false;
         }
 
@@ -105,13 +113,12 @@ class iSpringQuiz
     }
 
     /**
-     * @param DOMElement $questionsNode
-     * @param string $version
+     * @param  string  $version
      */
     private function exportQuestions(DOMElement $questionsNode, $version)
     {
         foreach ($questionsNode->childNodes as $questionNode) {
-            if (!$questionNode instanceof DOMElement) {
+            if (! $questionNode instanceof DOMElement) {
                 continue;
             }
 
@@ -123,7 +130,7 @@ class iSpringQuiz
     }
 
     /**
-     * @param string $version
+     * @param  string  $version
      * @return string
      */
     private function GetSchemaByVersion($version)
@@ -132,7 +139,8 @@ class iSpringQuiz
         if (Version::IsVersionNewerOrSameAs($version, self::VERSION_9)) {
             $validationSchema = self::XSD_CURRENT;
         }
-        return __DIR__ . '/' . $validationSchema;
+
+        return __DIR__.'/'.$validationSchema;
     }
 
     public static function CreateFromXmlNode(DOMElement $questionNode, $version)

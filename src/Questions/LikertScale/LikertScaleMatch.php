@@ -7,6 +7,7 @@ use DOMElement;
 class LikertScaleMatch
 {
     public $statementIndex;
+
     public $labelIndex;
 
     public function initFromXmlNode(DOMElement $node)

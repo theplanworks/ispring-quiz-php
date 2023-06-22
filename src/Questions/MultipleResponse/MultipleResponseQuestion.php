@@ -17,7 +17,7 @@ class MultipleResponseQuestion extends MultipleResponseSurveyQuestion
 
         foreach ($this->answers as $answer) {
             /** @var MultipleResponseAnswer $answer */
-            if (!$answer->correct) {
+            if (! $answer->correct) {
                 continue;
             }
             if ($this->correctAnswer != '') {

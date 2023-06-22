@@ -5,7 +5,9 @@ namespace ThePLAN\IspringQuizPhp\Questions\Numeric;
 class NumericAnswer
 {
     public $type;
+
     public $leftOperand;
+
     public $rightOperand;
 
     public function __construct($type, $leftOperand, $rightOperand = null)
@@ -19,25 +21,25 @@ class NumericAnswer
     {
         switch ($this->type) {
             case NumericAnswerType::BETWEEN:
-                return '< ' . $this->leftOperand . ' & > ' . $this->rightOperand;
+                return '< '.$this->leftOperand.' & > '.$this->rightOperand;
                 break;
             case NumericAnswerType::EQUAL:
-                return '= ' . $this->leftOperand;
+                return '= '.$this->leftOperand;
                 break;
             case NumericAnswerType::GREATHER:
-                return '> ' . $this->leftOperand;
+                return '> '.$this->leftOperand;
                 break;
             case NumericAnswerType::GREATHER_OR_EQUAL:
-                return '>= ' . $this->leftOperand;
+                return '>= '.$this->leftOperand;
                 break;
             case NumericAnswerType::LESS:
-                return '< ' . $this->leftOperand;
+                return '< '.$this->leftOperand;
                 break;
             case NumericAnswerType::LESS_OR_EQUAL:
-                return '<= ' . $this->leftOperand;
+                return '<= '.$this->leftOperand;
                 break;
             case NumericAnswerType::NOT_EQUAL:
-                return '!= ' . $this->leftOperand;
+                return '!= '.$this->leftOperand;
                 break;
         }
 

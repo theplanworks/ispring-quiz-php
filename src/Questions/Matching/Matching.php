@@ -7,6 +7,7 @@ use DOMElement;
 class Matching
 {
     public $premiseIndex;
+
     public $responseIndex;
 
     public function initFromXmlNode(DOMElement $node)

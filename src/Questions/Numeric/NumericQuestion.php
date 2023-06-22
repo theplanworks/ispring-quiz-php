@@ -17,18 +17,18 @@ class NumericQuestion extends NumericSurveyQuestion
 
         $answersNode = $node->getElementsByTagName('answers')->item(0);
         $answers = $this->exportAnswers($answersNode);
-        $this->correctAnswer = join(', ', $answers);
+        $this->correctAnswer = implode(', ', $answers);
     }
 
     private function exportAnswers(DOMElement $node = null)
     {
-        if (!$node) {
+        if (! $node) {
             return null;
         }
 
-        $answers = array();
+        $answers = [];
         $answersList = $node->childNodes;
-        for ($i = 0; $i < $answersList->length; ++$i) {
+        for ($i = 0; $i < $answersList->length; $i++) {
             $answerNode = $answersList->item($i);
             switch ($answerNode->nodeName) {
                 case 'between':

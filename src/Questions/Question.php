@@ -8,8 +8,11 @@ use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 abstract class Question
 {
     public $awardedPoints;
+
     public $direction;
+
     public $userAnswer;
+
     public $correctAnswer;
 
     /** @var bool */
@@ -36,7 +39,7 @@ abstract class Question
 
     public function isGraded()
     {
-        return !is_null($this->evaluationEnabled) ? $this->evaluationEnabled : $this->isGradedByDefault();
+        return ! is_null($this->evaluationEnabled) ? $this->evaluationEnabled : $this->isGradedByDefault();
     }
 
     abstract public function isGradedByDefault();

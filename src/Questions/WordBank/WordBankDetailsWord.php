@@ -7,7 +7,7 @@ use DOMElement;
 class WordBankDetailsWord extends WordBankDetailsSurveyWord
 {
     /**
-     * @var boolean
+     * @var bool
      */
     public $correct = false;
 

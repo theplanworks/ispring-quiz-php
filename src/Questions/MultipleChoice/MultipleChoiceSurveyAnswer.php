@@ -18,7 +18,7 @@ class MultipleChoiceSurveyAnswer extends Text
 
     public function getValue()
     {
-        return parent::getValue() . ' ' . $this->customAnswer;
+        return parent::getValue().' '.$this->customAnswer;
     }
 
     public function initFromXmlNode(DOMElement $node)

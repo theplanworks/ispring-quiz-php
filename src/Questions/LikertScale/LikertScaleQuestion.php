@@ -3,11 +3,10 @@
 namespace ThePLAN\IspringQuizPhp\Questions\LikertScale;
 
 use DOMElement;
-use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 use ThePLAN\IspringQuizPhp\Questions\Question;
 use ThePLAN\IspringQuizPhp\Questions\QuestionType;
 use ThePLAN\IspringQuizPhp\Questions\TextCollection;
-use ThePLAN\IspringQuizPhp\Questions\LikertScale\LikertScaleMatch;
+use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 
 class LikertScaleQuestion extends Question
 {
@@ -36,7 +35,7 @@ class LikertScaleQuestion extends Question
         $labelsCollection = TextCollection::fromXmlNode($labelsNode, 'label');
         $labels = $labelsCollection->toArray();
 
-        $userAnswers = array();
+        $userAnswers = [];
 
         if ($node->getElementsByTagName('userAnswer')->length != 0) {
             $userAnswerNode = $node->getElementsByTagName('userAnswer')->item(0);
@@ -47,7 +46,7 @@ class LikertScaleQuestion extends Question
         foreach ($statements as $statement) {
             $label = '';
             $userAnswer = $this->getUserAnswerByStatementIndex($userAnswers, $index);
-            $hasAnswerBeenGiven = $userAnswer && !is_null($userAnswer->labelIndex) && $userAnswer->labelIndex >= 0;
+            $hasAnswerBeenGiven = $userAnswer && ! is_null($userAnswer->labelIndex) && $userAnswer->labelIndex >= 0;
             if ($hasAnswerBeenGiven) {
                 $label = $labels[$userAnswer->labelIndex];
             }
@@ -55,20 +54,18 @@ class LikertScaleQuestion extends Question
             if ($this->userAnswer != '') {
                 $this->userAnswer .= '; ';
             }
-            $this->userAnswer .= $statement . ' - ' .
-                                 ($hasAnswerBeenGiven ? ($label . $this->getLabelIndexText($userAnswer)) : '');
-            ++$index;
+            $this->userAnswer .= $statement.' - '.
+                                 ($hasAnswerBeenGiven ? ($label.$this->getLabelIndexText($userAnswer)) : '');
+            $index++;
         }
     }
 
     /**
-     * @param $userAnswers
-     * @param $index
      * @return LikertScaleMatch
      */
     public function getUserAnswerByStatementIndex($userAnswers, $index)
     {
-        if (!$userAnswers) {
+        if (! $userAnswers) {
             return null;
         }
 
@@ -83,10 +80,10 @@ class LikertScaleQuestion extends Question
 
     private function exportUserAnswer(DOMElement $node)
     {
-        $out = array();
+        $out = [];
 
         $matchesList = $node->getElementsByTagName('match');
-        for ($i = 0; $i < $matchesList->length; ++$i) {
+        for ($i = 0; $i < $matchesList->length; $i++) {
             $matchNode = $matchesList->item($i);
 
             $match = new LikertScaleMatch();
@@ -97,19 +94,17 @@ class LikertScaleQuestion extends Question
         return $out;
     }
 
-    /**
-     * @param LikertScaleMatch|null $userAnswer
-     */
     private function getLabelIndexText(LikertScaleMatch $userAnswer = null)
     {
-        if (!$userAnswer) {
+        if (! $userAnswer) {
             return '';
         }
 
         $index = $userAnswer->labelIndex;
-        if (!$this->areLabelsIndexedFromZero) {
-            ++$index;
+        if (! $this->areLabelsIndexedFromZero) {
+            $index++;
         }
+
         return " ($index)";
     }
 }

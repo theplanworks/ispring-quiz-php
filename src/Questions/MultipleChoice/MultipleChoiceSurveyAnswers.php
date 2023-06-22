@@ -7,6 +7,7 @@ use DOMElement;
 class MultipleChoiceSurveyAnswers
 {
     public $answers;
+
     public $userAnswerIndex;
 
     public function initFromXmlNode(DOMElement $node)
@@ -16,7 +17,7 @@ class MultipleChoiceSurveyAnswers
         }
 
         $answersNodeList = $node->getElementsByTagName('answer');
-        for ($i = 0; $i < $answersNodeList->length; ++$i) {
+        for ($i = 0; $i < $answersNodeList->length; $i++) {
             $answerNode = $answersNodeList->item($i);
             $answer = $this->createAnswer();
             $answer->initFromXmlNode($answerNode);
