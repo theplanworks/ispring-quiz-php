@@ -4,7 +4,9 @@
 [![Tests](https://img.shields.io/github/actions/workflow/status/theplan/ispring-quiz-php/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/theplan/ispring-quiz-php/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/theplan/ispring-quiz-php.svg?style=flat-square)](https://packagist.org/packages/theplan/ispring-quiz-php)
 
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+This PHP package helps you parse results from [iSpring QuizMaker](https://www.ispringsolutions.com/ispring-quizmaker) when the presentation is configured to send results to a server.
+
+It requires PHP 8.1+.
 
 ## Support us
 
@@ -25,8 +27,11 @@ composer require theplan/ispring-quiz-php
 ## Usage
 
 ```php
-$skeleton = new ThePLAN\IspringQuizPhp();
-echo $skeleton->echoPhrase('Hello, ThePLAN!');
+/*
+$quizData is the resuest object from QuizMaker
+*/
+$quizService = new ThePLAN\IspringQuizPhp();
+$results = $quizService->parseQuizXml($quizData->detailedResults, $quizData->version);
 ```
 
 ## Testing
@@ -49,8 +54,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Matt Fox](https://github.com/mixaster)
-- [All Contributors](../../contributors)
+-   [Matt Fox](https://github.com/mixaster)
+-   [All Contributors](../../contributors)
 
 ## License
 
