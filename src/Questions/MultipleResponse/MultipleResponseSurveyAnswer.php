@@ -8,7 +8,9 @@ use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 class MultipleResponseSurveyAnswer
 {
     public $selected;
+
     public $text;
+
     public $customAnswer = '';
 
     public function initFromXmlNode(DOMElement $node)

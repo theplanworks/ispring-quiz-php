@@ -6,10 +6,10 @@ use DOMElement;
 
 class WordBankSurveyDetails
 {
-    private static $wordTagNames = array(
+    private static $wordTagNames = [
         'word',
-        'blank'
-    );
+        'blank',
+    ];
 
     public $items;
 

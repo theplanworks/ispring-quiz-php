@@ -17,7 +17,7 @@ class TypeInQuestion extends TypeInSurveyQuestion
 
         $answersNode = $node->getElementsByTagName('acceptableAnswers')->item(0);
         $answersList = $answersNode ? $answersNode->getElementsByTagName('answer') : [];
-        for ($i = 0; $i < $answersList->length; ++$i) {
+        for ($i = 0; $i < $answersList->length; $i++) {
             $answerNode = $answersList->item($i);
             if ($this->correctAnswer != '') {
                 $this->correctAnswer .= '; ';

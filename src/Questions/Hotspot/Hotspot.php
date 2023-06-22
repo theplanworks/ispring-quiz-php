@@ -7,7 +7,9 @@ use DOMElement;
 class Hotspot
 {
     public $marked;
+
     public $label;
+
     public $correct = null;
 
     public function initFromXmlNode(DOMElement $node)

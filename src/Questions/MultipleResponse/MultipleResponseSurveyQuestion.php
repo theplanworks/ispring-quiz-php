@@ -23,7 +23,7 @@ class MultipleResponseSurveyQuestion extends Question
 
         $answersNode = $node->getElementsByTagName('answers')->item(0);
         $answersList = $answersNode->getElementsByTagName('answer');
-        for ($i = 0; $i < $answersList->length; ++$i) {
+        for ($i = 0; $i < $answersList->length; $i++) {
             $answerNode = $answersList->item($i);
 
             $answer = $this->createAnswer();
@@ -33,15 +33,15 @@ class MultipleResponseSurveyQuestion extends Question
 
         foreach ($this->answers as $answer) {
             /** @var MultipleResponseSurveyAnswer $answer */
-            if (!$answer->selected) {
+            if (! $answer->selected) {
                 continue;
             }
             if ($this->userAnswer != '') {
                 $this->userAnswer .= '; ';
             }
             $this->userAnswer .= $answer->text;
-            if (!empty($answer->customAnswer)) {
-                $this->userAnswer .= " " . $answer->customAnswer;
+            if (! empty($answer->customAnswer)) {
+                $this->userAnswer .= ' '.$answer->customAnswer;
             }
         }
     }

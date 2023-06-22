@@ -19,12 +19,14 @@ class TextCollection
 
     /**
      * Add new item to collection
+     *
      * @param $item - String
      * @return item index
      */
     public function addItem($item)
     {
         $this->items[] = trim($item);
+
         return count($this->items) - 1;
     }
 
@@ -56,8 +58,6 @@ class TextCollection
     /**
      * Create new TextCollection object, and init it from xml node
      *
-     * @param DOMElement $node
-     * @param            $itemTagName
      *
      * @return TextCollection
      */
@@ -65,11 +65,12 @@ class TextCollection
     {
         $collection = new TextCollection();
         $collection->initFromXmlNode($node, $itemTagName);
+
         return $collection;
     }
 
     public function clear()
     {
-        $this->items = array();
+        $this->items = [];
     }
 }

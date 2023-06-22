@@ -15,7 +15,7 @@ class MultipleChoiceQuestion extends MultipleChoiceSurveyQuestion
     {
         parent::initFromXmlNode($node);
 
-        $answer = !empty($this->answers->answers[$this->answers->correctAnswerIndex])
+        $answer = ! empty($this->answers->answers[$this->answers->correctAnswerIndex])
                   ? $this->answers->answers[$this->answers->correctAnswerIndex]
                   : null;
         /** @var MultipleChoiceAnswer $answer */

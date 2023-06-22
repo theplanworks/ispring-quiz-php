@@ -5,7 +5,7 @@ namespace ThePLAN\IspringQuizPhp\Utils;
 class TimeIntervalFormat
 {
     /**
-     * @param int|float $seconds
+     * @param  int|float  $seconds
      * @return string
      */
     public function ApplyToSeconds($seconds)
@@ -15,6 +15,7 @@ class TimeIntervalFormat
         $seconds %= 3600;
         $minutes = floor($seconds / 60);
         $seconds %= 60;
-        return sprintf("%02d:%02d:%02d", $hours, $minutes, $seconds);
+
+        return sprintf('%02d:%02d:%02d', $hours, $minutes, $seconds);
     }
 }

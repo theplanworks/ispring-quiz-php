@@ -8,7 +8,7 @@ use ThePLAN\IspringQuizPhp\Utils\XmlUtils;
 class Text
 {
     /**
-     * @var String
+     * @var string
      */
     private $value;
 

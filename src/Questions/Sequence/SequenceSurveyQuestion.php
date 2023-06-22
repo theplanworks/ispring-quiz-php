@@ -24,7 +24,7 @@ class SequenceSurveyQuestion extends Question
         $answersNode = $node->getElementsByTagName('answers')->item(0);
         $answersList = $answersNode ? $answersNode->getElementsByTagName('answer') : [];
 
-        for ($i = 0; $i < $answersList->length; ++$i) {
+        for ($i = 0; $i < $answersList->length; $i++) {
             $answerNode = $answersList->item($i);
 
             $answer = $this->createAnswer($i);
@@ -32,17 +32,17 @@ class SequenceSurveyQuestion extends Question
             $this->answers[] = $answer;
         }
 
-        $userAnswer = array();
+        $userAnswer = [];
         foreach ($this->answers as $answer) {
             $userAnswer[$this->getUserAnswerIndex($answer)] = $answer;
         }
 
         $answersCount = count($userAnswer);
-        for ($i = 0; $i < $answersCount; ++$i) {
+        for ($i = 0; $i < $answersCount; $i++) {
             if ($this->userAnswer != '') {
                 $this->userAnswer .= '; ';
             }
-            $this->userAnswer .= $i + 1 . '. ' . $userAnswer[$i]->text;
+            $this->userAnswer .= $i + 1 .'. '.$userAnswer[$i]->text;
         }
     }
 
@@ -51,11 +51,12 @@ class SequenceSurveyQuestion extends Question
         $answer = new SequenceSurveyAnswer();
         $answer->index = $index;
         $answer->userDefinedPosition = $index;
+
         return $answer;
     }
 
     /**
-     * @param SequenceSurveyAnswer $answer
+     * @param  SequenceSurveyAnswer  $answer
      * @return int
      */
     private function getUserAnswerIndex($answer)

@@ -15,17 +15,17 @@ class SequenceQuestion extends SequenceSurveyQuestion
     {
         parent::initFromXmlNode($node);
 
-        $correctAnswer = array();
+        $correctAnswer = [];
         foreach ($this->answers as $answer) {
             $correctAnswer[$this->getCorrectAnswerIndex($answer)] = $answer;
         }
 
         $answersCount = count($correctAnswer);
-        for ($i = 0; $i < $answersCount; ++$i) {
+        for ($i = 0; $i < $answersCount; $i++) {
             if ($this->correctAnswer != '') {
                 $this->correctAnswer .= '; ';
             }
-            $this->correctAnswer .= $i + 1 . '. ' . $correctAnswer[$i]->text;
+            $this->correctAnswer .= $i + 1 .'. '.$correctAnswer[$i]->text;
         }
     }
 
@@ -33,11 +33,12 @@ class SequenceQuestion extends SequenceSurveyQuestion
     {
         $answer = new SequenceAnswer();
         $answer->index = $index;
+
         return $answer;
     }
 
     /**
-     * @param SequenceAnswer $answer
+     * @param  SequenceAnswer  $answer
      * @return int
      */
     private function getCorrectAnswerIndex($answer)

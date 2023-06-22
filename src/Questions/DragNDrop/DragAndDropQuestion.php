@@ -28,13 +28,13 @@ class DragAndDropQuestion extends Question
 
         $objectsNode = $node->getElementsByTagName('objects')->item(0);
         $objectsList = $objectsNode->getElementsByTagName('object');
-        for ($i = 0; $i < $objectsList->length; ++$i) {
+        for ($i = 0; $i < $objectsList->length; $i++) {
             $this->objects[] = trim($objectsList->item($i)->textContent);
         }
 
         $destinationsNode = $node->getElementsByTagName('destinations')->item(0);
         $destinationsList = $destinationsNode->getElementsByTagName('destination');
-        for ($i = 0; $i < $destinationsList->length; ++$i) {
+        for ($i = 0; $i < $destinationsList->length; $i++) {
             $this->destinations[] = trim($destinationsList->item($i)->textContent);
         }
 
@@ -53,7 +53,6 @@ class DragAndDropQuestion extends Question
     }
 
     /**
-     * @param DOMElement $node
      * @return DndMatch[]
      */
     private function exportMatchCollection(DOMElement $node)
@@ -61,7 +60,7 @@ class DragAndDropQuestion extends Question
         $result = [];
 
         $matchesList = $node->getElementsByTagName('match');
-        for ($i = 0; $i < $matchesList->length; ++$i) {
+        for ($i = 0; $i < $matchesList->length; $i++) {
             $match = new DndMatch();
             $match->initFromXmlNode($matchesList->item($i));
             $result[] = $match;
@@ -87,29 +86,27 @@ class DragAndDropQuestion extends Question
     }
 
     /**
-     * @param DndMatch $match
      * @return string|null
      */
     private function getObjectName(DndMatch $match)
     {
-        return !is_null($match->objectIndex) && !empty($this->objects[$match->objectIndex])
+        return ! is_null($match->objectIndex) && ! empty($this->objects[$match->objectIndex])
             ? $this->objects[$match->objectIndex]
             : '';
     }
 
     /**
-     * @param DndMatch $match
      * @return string|null
      */
     private function getDestinationName(DndMatch $match)
     {
-        return !is_null($match->destinationIndex) && !empty($this->destinations[$match->destinationIndex])
+        return ! is_null($match->destinationIndex) && ! empty($this->destinations[$match->destinationIndex])
             ? $this->destinations[$match->destinationIndex]
             : '';
     }
 
     /**
-     * @param DndMatch[] $matches
+     * @param  DndMatch[]  $matches
      * @return string
      */
     private function buildPlacementString($matches)
@@ -120,6 +117,7 @@ class DragAndDropQuestion extends Question
             $destination = $this->getDestinationName($match);
             $parts[] = "$object - $destination";
         }
+
         return implode('; ', $parts);
     }
 }
