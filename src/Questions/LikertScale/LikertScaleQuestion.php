@@ -86,7 +86,7 @@ class LikertScaleQuestion extends Question
         for ($i = 0; $i < $matchesList->length; $i++) {
             $matchNode = $matchesList->item($i);
 
-            $match = new LikertScaleMatch();
+            $match = new LikertScaleMatch;
             $match->initFromXmlNode($matchNode);
             $out[] = $match;
         }
@@ -94,7 +94,7 @@ class LikertScaleQuestion extends Question
         return $out;
     }
 
-    private function getLabelIndexText(LikertScaleMatch $userAnswer = null)
+    private function getLabelIndexText(?LikertScaleMatch $userAnswer = null)
     {
         if (! $userAnswer) {
             return '';

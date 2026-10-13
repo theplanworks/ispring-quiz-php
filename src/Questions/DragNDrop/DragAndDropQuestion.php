@@ -61,7 +61,7 @@ class DragAndDropQuestion extends Question
 
         $matchesList = $node->getElementsByTagName('match');
         for ($i = 0; $i < $matchesList->length; $i++) {
-            $match = new DndMatch();
+            $match = new DndMatch;
             $match->initFromXmlNode($matchesList->item($i));
             $result[] = $match;
         }

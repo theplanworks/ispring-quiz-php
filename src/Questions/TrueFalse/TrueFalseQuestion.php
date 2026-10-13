@@ -4,6 +4,4 @@ namespace ThePLAN\IspringQuizPhp\Questions\TrueFalse;
 
 use ThePLAN\IspringQuizPhp\Questions\MultipleChoice\MultipleChoiceQuestion;
 
-class TrueFalseQuestion extends MultipleChoiceQuestion
-{
-}
+class TrueFalseQuestion extends MultipleChoiceQuestion {}

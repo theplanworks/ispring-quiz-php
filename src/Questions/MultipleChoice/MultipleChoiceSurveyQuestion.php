@@ -34,6 +34,6 @@ class MultipleChoiceSurveyQuestion extends Question
 
     protected function createAnswers()
     {
-        return new MultipleChoiceSurveyAnswers();
+        return new MultipleChoiceSurveyAnswers;
     }
 }

@@ -8,7 +8,7 @@ use ThePLAN\IspringQuizPhp\Questions\Question;
 class MultipleResponseSurveyQuestion extends Question
 {
     /**
-     *@var array of MultipleResponseSurveyAnswer
+     * @var array of MultipleResponseSurveyAnswer
      */
     public $answers;
 
@@ -48,6 +48,6 @@ class MultipleResponseSurveyQuestion extends Question
 
     protected function createAnswer()
     {
-        return new MultipleResponseSurveyAnswer();
+        return new MultipleResponseSurveyAnswer;
     }
 }

@@ -31,7 +31,7 @@ class SequenceQuestion extends SequenceSurveyQuestion
 
     protected function createAnswer($index)
     {
-        $answer = new SequenceAnswer();
+        $answer = new SequenceAnswer;
         $answer->index = $index;
 
         return $answer;

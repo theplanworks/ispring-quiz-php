@@ -74,7 +74,7 @@ class MatchingSurveyQuestion extends Question
     /**
      * export matches collection from xml node
      *
-     * @param $node DOMElement xml node
+     * @param  $node  DOMElement xml node
      * @return array of Match
      */
     protected function exportMatchesCollection(DOMElement $node)
@@ -85,7 +85,7 @@ class MatchingSurveyQuestion extends Question
         for ($i = 0; $i < $matchesList->length; $i++) {
             $matchNode = $matchesList->item($i);
 
-            $match = new Matching();
+            $match = new Matching;
             $match->initFromXmlNode($matchNode);
             $out[] = $match;
         }

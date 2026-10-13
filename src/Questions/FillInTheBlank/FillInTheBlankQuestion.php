@@ -13,7 +13,7 @@ class FillInTheBlankQuestion extends FillInTheBlankSurveyQuestion
 
     protected function createDetails()
     {
-        return new FillInTheBlankDetails();
+        return new FillInTheBlankDetails;
     }
 
     public function initFromXmlNode(DOMElement $node)

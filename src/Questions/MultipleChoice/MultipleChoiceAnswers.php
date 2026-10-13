@@ -19,6 +19,6 @@ class MultipleChoiceAnswers extends MultipleChoiceSurveyAnswers
 
     protected function createAnswer()
     {
-        return new MultipleChoiceAnswer();
+        return new MultipleChoiceAnswer;
     }
 }

@@ -24,6 +24,6 @@ class FillInTheBlankSurveyDetails
 
     protected function createBlank()
     {
-        return new FillInTheBlankSurveyDetailsBlank();
+        return new FillInTheBlankSurveyDetailsBlank;
     }
 }

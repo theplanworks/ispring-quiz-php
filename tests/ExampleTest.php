@@ -3,9 +3,9 @@
 use ThePLAN\IspringQuizPhp\Questions\TypeIn\TypeInQuestion;
 
 it('preserves type-in responses without acceptable answers', function ($evaluationAttribute, $isGraded) {
-    $document = new DOMDocument();
+    $document = new DOMDocument;
     $document->loadXML('<typeInQuestion '.$evaluationAttribute.' userAnswer=" Survey response " awardedPoints="0"><direction>Enter a response</direction></typeInQuestion>');
-    $question = new TypeInQuestion();
+    $question = new TypeInQuestion;
 
     $question->initFromXmlNode($document->documentElement);
 
@@ -21,9 +21,9 @@ it('preserves type-in responses without acceptable answers', function ($evaluati
 ]);
 
 it('parses type-in acceptable answers', function ($answersXml, $correctAnswer) {
-    $document = new DOMDocument();
+    $document = new DOMDocument;
     $document->loadXML('<typeInQuestion userAnswer="First"><direction>Enter a response</direction><acceptableAnswers>'.$answersXml.'</acceptableAnswers></typeInQuestion>');
-    $question = new TypeInQuestion();
+    $question = new TypeInQuestion;
 
     $question->initFromXmlNode($document->documentElement);
 

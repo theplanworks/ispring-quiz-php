@@ -26,6 +26,6 @@ class WordBankSurveyDetails
 
     protected function createWord()
     {
-        return new WordBankDetailsSurveyWord();
+        return new WordBankDetailsSurveyWord;
     }
 }

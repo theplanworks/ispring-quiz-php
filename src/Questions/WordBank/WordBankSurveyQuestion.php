@@ -34,6 +34,6 @@ class WordBankSurveyQuestion extends Question
 
     protected function createDetails()
     {
-        return new WordBankSurveyDetails();
+        return new WordBankSurveyDetails;
     }
 }

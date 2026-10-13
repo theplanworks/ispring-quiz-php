@@ -25,10 +25,9 @@ class HotspotQuestion extends Question
     }
 
     /**
-     * @param  DOMElement  $node
      * @return Hotspot[]
      */
-    private function getHotspotsFromXmlNode(DOMElement $node = null)
+    private function getHotspotsFromXmlNode(?DOMElement $node = null)
     {
         if (! $node) {
             return [];
@@ -55,7 +54,7 @@ class HotspotQuestion extends Question
             return null;
         }
 
-        $hotspot = new Hotspot();
+        $hotspot = new Hotspot;
         $hotspot->initFromXmlNode($hotspotNode);
 
         return $hotspot;

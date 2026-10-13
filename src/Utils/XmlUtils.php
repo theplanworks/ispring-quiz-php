@@ -12,7 +12,7 @@ class XmlUtils
      * @param  string  $attributeName
      * @return bool|null
      */
-    public static function getElementBooleanAttribute(DOMElement $element = null, $attributeName)
+    public static function getElementBooleanAttribute(?DOMElement $element, $attributeName)
     {
         if (! $element || ! $element->hasAttribute($attributeName)) {
             return null;
@@ -24,7 +24,7 @@ class XmlUtils
     /**
      * @return string|null
      */
-    public static function getElementText(DOMElement $element = null)
+    public static function getElementText(?DOMElement $element = null)
     {
         if (! $element) {
             return null;

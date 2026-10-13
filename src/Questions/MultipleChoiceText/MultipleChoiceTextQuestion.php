@@ -25,6 +25,6 @@ class MultipleChoiceTextQuestion extends MultipleChoiceTextSurveyQuestion
 
     protected function createDetails()
     {
-        return new MultipleChoiceTextDetails();
+        return new MultipleChoiceTextDetails;
     }
 }

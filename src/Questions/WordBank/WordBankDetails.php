@@ -11,6 +11,6 @@ class WordBankDetails extends WordBankSurveyDetails
 
     protected function createWord()
     {
-        return new WordBankDetailsWord();
+        return new WordBankDetailsWord;
     }
 }

@@ -35,6 +35,6 @@ class MultipleChoiceTextSurveyQuestion extends Question
 
     protected function createDetails()
     {
-        return new MultipleChoiceTextSurveyDetails();
+        return new MultipleChoiceTextSurveyDetails;
     }
 }

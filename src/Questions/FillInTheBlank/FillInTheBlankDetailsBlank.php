@@ -2,6 +2,4 @@
 
 namespace ThePLAN\IspringQuizPhp\Questions\FillInTheBlank;
 
-class FillInTheBlankDetailsBlank extends FillInTheBlankSurveyDetailsBlank
-{
-}
+class FillInTheBlankDetailsBlank extends FillInTheBlankSurveyDetailsBlank {}

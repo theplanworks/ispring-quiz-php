@@ -32,6 +32,6 @@ class FillInTheBlankSurveyQuestion extends Question
 
     protected function createDetails()
     {
-        return new FillInTheBlankSurveyDetails();
+        return new FillInTheBlankSurveyDetails;
     }
 }

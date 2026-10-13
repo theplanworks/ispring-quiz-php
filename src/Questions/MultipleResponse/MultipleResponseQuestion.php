@@ -29,6 +29,6 @@ class MultipleResponseQuestion extends MultipleResponseSurveyQuestion
 
     protected function createAnswer()
     {
-        return new MultipleResponseAnswer();
+        return new MultipleResponseAnswer;
     }
 }

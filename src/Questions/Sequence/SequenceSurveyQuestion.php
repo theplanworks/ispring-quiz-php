@@ -48,7 +48,7 @@ class SequenceSurveyQuestion extends Question
 
     protected function createAnswer($index)
     {
-        $answer = new SequenceSurveyAnswer();
+        $answer = new SequenceSurveyAnswer;
         $answer->index = $index;
         $answer->userDefinedPosition = $index;
 

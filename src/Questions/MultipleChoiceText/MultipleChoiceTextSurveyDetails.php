@@ -23,6 +23,6 @@ class MultipleChoiceTextSurveyDetails
 
     protected function createBlank()
     {
-        return new MultipleChoiceTextSurveyDetailsBlank();
+        return new MultipleChoiceTextSurveyDetailsBlank;
     }
 }

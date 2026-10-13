@@ -20,7 +20,7 @@ class NumericQuestion extends NumericSurveyQuestion
         $this->correctAnswer = implode(', ', $answers);
     }
 
-    private function exportAnswers(DOMElement $node = null)
+    private function exportAnswers(?DOMElement $node = null)
     {
         if (! $node) {
             return null;

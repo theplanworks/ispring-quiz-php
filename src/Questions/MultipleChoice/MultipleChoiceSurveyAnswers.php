@@ -27,6 +27,6 @@ class MultipleChoiceSurveyAnswers
 
     protected function createAnswer()
     {
-        return new MultipleChoiceSurveyAnswer();
+        return new MultipleChoiceSurveyAnswer;
     }
 }

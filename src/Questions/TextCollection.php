@@ -20,7 +20,7 @@ class TextCollection
     /**
      * Add new item to collection
      *
-     * @param $item - String
+     * @param  $item  - String
      * @return item index
      */
     public function addItem($item)
@@ -63,7 +63,7 @@ class TextCollection
      */
     public static function fromXmlNode(DOMElement $node, $itemTagName)
     {
-        $collection = new TextCollection();
+        $collection = new TextCollection;
         $collection->initFromXmlNode($node, $itemTagName);
 
         return $collection;
